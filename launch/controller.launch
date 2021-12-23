@@ -1,0 +1,15 @@
+<?xml version="1.0" ?>
+<launch>
+  <arg name="node_start_delay" default="4.0" />
+  <include file="$(find qualisys_streaming)/launch/qualisys.launch"/>
+  <node name="error_plot"
+        pkg="rqt_plot"
+        type="rqt_plot"
+        args="/error/data"/>
+        
+  
+  
+  <node name="controller" pkg="tek4030_turtlebot3" type="controller" launch-prefix="bash -c 'sleep $(arg node_start_delay); $0 $@' " />
+</launch>
+
+
